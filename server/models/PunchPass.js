@@ -15,7 +15,6 @@ const punchPassSchema = new Schema(
         // number of punches
         punches: {
             type: Number,
-            required: true,
             default: 0
         }
     },
