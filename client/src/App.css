@@ -12,3 +12,35 @@ html, body {
   font-family: var(--font-primary);
   font-size: 1rem;
 }
+
+.header {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+  background-color: var(--tertiary-color);
+}
+
+.header-logo {
+  width: 20vw;
+}
+
+
+
+/* media queries */
+@media screen and (max-width: 1000px) {
+  .header-logo {
+    width: 40vw;
+  }
+}
+
+@media screen and (max-width: 768px) {
+
+}
+
+@media screen and (max-width: 580px) {
+  .header-logo {
+    width: 100vw;
+  }
+}
