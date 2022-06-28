@@ -12,6 +12,21 @@ router.get('/', (req, res) => {
     });
 });
 
+// GET pass by id /api/passes/:id
+router.get('/:id', ({ params }, res) => {
+    PunchPass.findOne({ _id: params.id })
+    .then(dbPassData => {
+        if (!dbPassData) {
+            return res.status(404).json({ message: 'Pass not found' });
+        }
+        res.json(dbPassData);
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    });
+});
+
 // POST add a new pass /api/passes
 router.post('/', ({ body }, res) => {
     // Body expects { name: passHoldersName, passType: regular }
@@ -66,6 +81,21 @@ router.post('/:id/renew', (req, res) => {
             console.log(err);
             res.status(500).json(err);
         });
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    });
+});
+
+// DELETE remove pass /api/passes/:id
+router.delete('/:id', ({ params }, res) => {
+    PunchPass.findOneAndDelete({ _id: params.id })
+    .then(dbPassData => {
+        if (!dbPassData) {
+            return res.status(404).json({ message: 'Pass not found' });
+        }
+        res.json(dbPassData);
     })
     .catch(err => {
         console.log(err);
