@@ -24,6 +24,15 @@ html, body {
 
 .header-logo {
   width: 18vw;
+  margin: 0 0 0 1rem;
+}
+
+.txt-input {
+  font-size: 1.2rem;
+  margin: 0 1rem;
+  padding: 0.5rem 1.2rem;
+  border-radius: 18px;
+  border: none;
 }
 
 .list-title {
@@ -71,7 +80,7 @@ html, body {
 }
 
 .footer {
-  position: absolute;
+  position: fixed;
   bottom: 0;
   height: 7vh;
   width: 100%;
@@ -102,10 +111,19 @@ html, body {
   .list-title {
     font-size: 2rem;
   }
+
+  .pass-list {
+    margin-bottom: 3rem;
+  }
 }
 
 @media screen and (max-width: 580px) {
   .header-logo {
     width: 100vw;
+    margin: 0;
+  }
+
+  .txt-input {
+    margin: 0 auto 1rem auto;
   }
 }
