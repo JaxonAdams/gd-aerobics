@@ -1,0 +1,14 @@
+:root {
+  --background: #F6F4F0;
+  --primary-color: #ED1566;
+  --secondary-color: #F4648E;
+  --tertiary-color: #FACDCD;
+  --font-primary: 'Roboto', sans-serif;
+  --font-heading: 'Suez One', serif;
+}
+
+html, body {
+  background: var(--background);
+  font-family: var(--font-primary);
+  font-size: 1rem;
+}
