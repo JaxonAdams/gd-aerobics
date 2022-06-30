@@ -35,6 +35,10 @@ html, body {
   border: none;
 }
 
+.pass-list-container {
+  margin-bottom: 2rem;
+}
+
 .list-title {
   font-family: var(--font-heading);
   font-weight: 300;
@@ -75,14 +79,18 @@ html, body {
   cursor: pointer;
 }
 
+.overdue-pass {
+  background-color: var(--secondary-color);
+}
+
 .pass p {
   margin: .5rem 1rem;
 }
 
 .footer {
-  position: fixed;
-  bottom: 0;
-  height: 7vh;
+  /* position: fixed;
+  bottom: 0; */
+  height: 5vh;
   width: 100%;
   background-color: var(--tertiary-color);
   display: flex;
@@ -94,7 +102,7 @@ html, body {
 
 .footer-txt {
   font-family: var(--font-heading);
-  font-size: 2rem;
+  font-size: 1.7rem;
   font-weight: 400;
 }
 

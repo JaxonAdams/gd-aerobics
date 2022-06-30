@@ -33,13 +33,14 @@ const PassList = ({ searchParam }) => {
 
     return (
         <div className='pass-list-container'>
-            <h1 className='list-title'>Aerobics Punch Passes</h1>
+            <h1 className='list-title'>Fitness Punch Passes</h1>
             <div className='pass-list'>
                 {filteredList.map(pass => (
-                    <div className='pass' key={pass._id}>
+                    <div className={`pass ${pass.overduePunches && 'overdue-pass'}`} key={pass._id}>
                         <p>{pass.name}</p>
                         <div>
-                            <p>{pass.punches} Punches</p>
+                            <p>{pass.punches} {pass.punches === 1 ? 'Punch' : 'Punches'}</p>
+                            {pass.overduePunches && <p>({pass.overduePunches} {pass.overduePunches === 1 ? 'punch' : 'punches'} over limit)</p>}
                             <p>Pass Type: {pass.passType}</p>
                         </div>
                     </div>

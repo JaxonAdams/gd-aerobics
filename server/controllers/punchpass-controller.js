@@ -5,6 +5,7 @@ const { PunchPass } = require('../models');
 router.get('/', (req, res) => {
     PunchPass.find({})
     .select('-__v')
+    .sort('name')
     .then(dbPassData => res.json(dbPassData))
     .catch(err => {
         console.log(err);
