@@ -15,6 +15,7 @@ html, body {
 
 .header {
   display: flex;
+  flex: 1;
   flex-flow: row wrap;
   justify-content: space-between;
   align-items: center;
@@ -27,12 +28,21 @@ html, body {
   margin: 0 0 0 1rem;
 }
 
+.header-link {
+  text-decoration: none;
+  color: black;
+  font-size: 1.7rem;
+  margin: 1rem 2rem;
+  cursor: pointer;
+}
+
 .txt-input {
   font-size: 1.2rem;
-  margin: 0 1rem;
+  margin: 1rem;
   padding: 0.5rem 1.2rem;
   border-radius: 18px;
   border: none;
+  font-family: var(--font-primary);
 }
 
 .pass-list-container {
@@ -107,6 +117,43 @@ html, body {
   font-weight: 400;
 }
 
+.form-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-form {
+  background-color: var(--tertiary-color);
+  border-radius: 18px;
+  padding: 2rem;
+  margin-top: 4rem;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+}
+
+.login-form h2 {
+  font-family: var(--font-heading);
+  font-weight: 300;
+  font-size: 2rem;
+  text-align: center;
+  border-bottom: 3px solid var(--secondary-color);
+}
+
+.form-btn {
+  margin: 1rem;
+  padding: 0.5rem;
+  font-size: 1rem;
+  font-family: var(--font-primary);
+  background-color: var(--secondary-color);
+  border: none;
+  cursor: pointer;
+  font-weight: 550;
+  border-radius: 18px;
+}
+
 
 
 /* media queries */
@@ -127,6 +174,12 @@ html, body {
 }
 
 @media screen and (max-width: 580px) {
+  .header {
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
   .header-logo {
     width: 100vw;
     margin: 0;

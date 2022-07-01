@@ -15,7 +15,7 @@ router.get('/', (req, res) => {
 // POST add user /api/users
 router.post('/', async ({ body }, res) => {
     // expects { email: example@gmail.com, password: somepassword }
-    const user = await User.create(body).select('-__v -password');
+    const user = await User.create(body);
     const token = signToken(user);
 
     res.json({ token, user });
