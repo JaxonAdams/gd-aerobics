@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
+import auth from '../utils/auth';
+
 const PassList = ({ searchParam }) => {
     const [passList, setPassList] = useState([]);
     const [filteredList, setFilteredList] = useState([]);
@@ -31,6 +33,22 @@ const PassList = ({ searchParam }) => {
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [searchParam]);
 
+    const handlePunch = passInfo => {
+        axios.post(`/api/passes/${passInfo._id}/punch`)
+        .then(() => {
+            // TODO: look for way to update list after punch w/o reload
+            window.location.reload();
+        });
+    };
+
+    const handleRenew = passInfo => {
+        axios.post(`/api/passes/${passInfo._id}/renew`)
+        .then(() => {
+            // TODO: look for way to update list after punch w/o reload
+            window.location.reload();
+        });
+    };
+
     return (
         <div className='pass-list-container'>
             <h1 className='list-title'>Fitness Punch Passes</h1>
@@ -43,6 +61,12 @@ const PassList = ({ searchParam }) => {
                             {pass.overduePunches && <p>({pass.overduePunches} {pass.overduePunches === 1 ? 'punch' : 'punches'} over limit)</p>}
                             <p>Pass Type: {pass.passType}</p>
                         </div>
+                        {!auth.loggedIn() ? 
+                        <div>
+                            <button className='form-btn' onClick={() => handlePunch(pass)}>Punch</button>   
+                            <button className='form-btn' onClick={() => handleRenew(pass)}>Renew</button>   
+                        </div>
+                        : ''}
                     </div>
                 ))}
             </div>
