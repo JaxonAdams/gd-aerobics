@@ -123,7 +123,7 @@ html, body {
   align-items: center;
 }
 
-.login-form {
+.login-form, .add-pass-form {
   background-color: var(--tertiary-color);
   border-radius: 18px;
   padding: 2rem;
@@ -153,6 +153,11 @@ html, body {
   border-radius: 18px;
 }
 
+.add-pass-form {
+  width: 60vw;
+  margin: 1rem auto;
+}
+
 
 
 /* media queries */
@@ -169,6 +174,10 @@ html, body {
 
   .pass-list {
     margin-bottom: 3rem;
+  }
+
+  .add-pass-form {
+    width: 80vw;
   }
 }
 

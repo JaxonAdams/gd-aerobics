@@ -59,14 +59,15 @@ const PassList = ({ searchParam }) => {
                         <div>
                             <p>{pass.punches} {pass.punches === 1 ? 'Punch' : 'Punches'}</p>
                             {pass.overduePunches && <p>({pass.overduePunches} {pass.overduePunches === 1 ? 'punch' : 'punches'} over limit)</p>}
+                            {pass.expirationDate && <p>Expires on {pass.expirationDate.split('T')[0]}</p>}
                             <p>Pass Type: {pass.passType}</p>
+                            {!auth.loggedIn() ? 
+                                <div>
+                                    <button className='form-btn' onClick={() => handlePunch(pass)}>Punch</button>   
+                                    <button className='form-btn' onClick={() => handleRenew(pass)}>Renew</button>   
+                                </div>
+                            : ''}
                         </div>
-                        {!auth.loggedIn() ? 
-                        <div>
-                            <button className='form-btn' onClick={() => handlePunch(pass)}>Punch</button>   
-                            <button className='form-btn' onClick={() => handleRenew(pass)}>Renew</button>   
-                        </div>
-                        : ''}
                     </div>
                 ))}
             </div>
