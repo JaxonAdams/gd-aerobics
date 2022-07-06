@@ -76,6 +76,10 @@ html, body {
   display: none;
 }
 
+.pass-info-container {
+  width: 300px;
+}
+
 .pass {
   display: flex;
   flex-flow: row wrap;
@@ -131,14 +135,19 @@ html, body {
   display: flex;
   flex-flow: column;
   justify-content: center;
+  align-items: center;
 }
 
-.login-form h2 {
+.login-form h2, .add-pass-form h2 {
   font-family: var(--font-heading);
   font-weight: 300;
   font-size: 2rem;
   text-align: center;
   border-bottom: 3px solid var(--secondary-color);
+}
+
+.add-pass-form h2 {
+  width: 50%;
 }
 
 .form-btn {
@@ -156,6 +165,11 @@ html, body {
 .add-pass-form {
   width: 60vw;
   margin: 1rem auto;
+}
+
+.add-form-btn {
+  padding: 1rem;
+  border: none;
 }
 
 
@@ -178,6 +192,10 @@ html, body {
 
   .add-pass-form {
     width: 80vw;
+  }
+
+  .add-pass-form h2 {
+    width: 80%;
   }
 }
 
