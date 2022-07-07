@@ -11,7 +11,7 @@ const AddPass = () => {
     const handleSubmit = e => {
         e.preventDefault();
 
-        if (formState.name) {
+        if (formState.name && formState.passType !== 'Pass Type') {
             axios.post('/api/passes', formState)
             .then(() => {
                 window.location.reload();
@@ -24,8 +24,8 @@ const AddPass = () => {
             <h2>Add A Punch Pass</h2>
             <input className='txt-input' type='text' name='name' placeholder='Name...' defaultValue={formState.name} onChange={handleChange} />
             <div>
-                <label htmlFor='passType'>Pass Type: </label>
                 <select className='txt-input' name='passType' defaultValue={formState.passType}  onChange={handleChange}>
+                    <option>Pass Type</option>
                     <option>Regular</option>
                     <option>Unlimited</option>
                 </select>

@@ -56,6 +56,13 @@ const PassList = ({ searchParam }) => {
         });
     };
 
+    const handleDeleteNote = passInfo => {
+        axios.put('/api/passes/note', { name: passInfo.name, passType: passInfo.passType, note: null })
+        .then(() => {
+            window.location.reload();
+        });
+    };
+
     return (
         <div className='pass-list-container'>
             <h1 className='list-title'>Fitness Punch Passes</h1>
@@ -67,6 +74,7 @@ const PassList = ({ searchParam }) => {
                             {!auth.loggedIn() ?
                             <>
                             {pass.note && <p style={{fontStyle: 'italic'}}>Note: {pass.note}</p>}
+                            {pass.note && <button className='form-btn' onClick={() => handleDeleteNote(pass)}>Delete Note</button>}
                             <button className='form-btn' onClick={() => handleDelete(pass)}>Delete Pass</button>
                             </> : null}
                         </div>
