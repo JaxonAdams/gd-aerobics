@@ -123,4 +123,23 @@ router.put('/note', ({ body }, res) => {
     });
 });
 
+// PUT update waiver checkbox /api/passes/:id/waiver
+router.put('/:id/waiver', ({ params, body }, res) => {
+    PunchPass.findOneAndUpdate(
+        { _id: params.id },
+        { waiverReceived: body.waiverReceived },
+        { new: true, runValidators: true }
+    )
+    .then(dbPassData => {
+        if (!dbPassData) {
+            return res.status(404).json({ message: 'Note not found' });
+        }
+        res.json(dbPassData);
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    });
+});
+
 module.exports = router;

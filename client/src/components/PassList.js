@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { App, Check2Square } from 'react-bootstrap-icons';
 
 import auth from '../utils/auth';
 
@@ -63,6 +64,20 @@ const PassList = ({ searchParam }) => {
         });
     };
 
+    const handleUncheckWaiver = passInfo => {
+        axios.put(`/api/passes/${passInfo._id}/waiver`, { waiverReceived: false })
+        .then(() => {
+            window.location.reload();
+        });
+    };
+
+    const handleCheckWaiver = passInfo => {
+        axios.put(`/api/passes/${passInfo._id}/waiver`, { waiverReceived: true })
+        .then(() => {
+            window.location.reload();
+        });
+    };
+
     return (
         <div className='pass-list-container'>
             <h1 className='list-title'>Fitness Punch Passes</h1>
@@ -70,7 +85,17 @@ const PassList = ({ searchParam }) => {
                 {filteredList.map(pass => (
                     <div className={`pass ${pass.overduePunches && 'overdue-pass'}`} key={pass._id}>
                         <div className='pass-info-container'>
-                            <b>{pass.name}</b>
+                            <b>
+                                {pass.name} 
+                                {!auth.loggedIn() ? 
+                                <span>
+                                {pass.waiverReceived === true ?
+                                    <span onClick={() => handleUncheckWaiver(pass)}> <Check2Square /></span>
+                                    :
+                                    <span onClick={() => handleCheckWaiver(pass)}> <App /></span>
+                                }
+                                </span> : null}
+                            </b>
                             {!auth.loggedIn() ?
                             <>
                             {pass.note && <p style={{fontStyle: 'italic'}}>Note: {pass.note}</p>}

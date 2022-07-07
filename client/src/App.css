@@ -84,6 +84,10 @@ html, body {
   align-items: center;
 }
 
+.pass-info-container b span {
+  cursor: pointer;
+}
+
 .pass {
   display: flex;
   flex-flow: row wrap;

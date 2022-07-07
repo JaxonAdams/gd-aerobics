@@ -25,6 +25,11 @@ const punchPassSchema = new Schema(
         // note on card, e.g. 'Contacted last Wednesday'
         note: {
             type: String
+        },
+        // boolean, true if we have received their waiver
+        waiverReceived: {
+            type: Boolean,
+            default: false
         }
     },
     {
