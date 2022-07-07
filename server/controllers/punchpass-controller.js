@@ -104,10 +104,10 @@ router.delete('/:id', ({ params }, res) => {
     });
 });
 
-// PUT update note on pass /api/passes/:id/note
-router.put('/:id/note', ({ params, body }, res) => {
+// PUT update note on pass /api/passes/note
+router.put('/note', ({ body }, res) => {
     PunchPass.findOneAndUpdate(
-        { _id: params.id },
+        { name: body.name, passType: body.passType },
         { note: body.note },
         { new: true, runValidators: true }
     )
