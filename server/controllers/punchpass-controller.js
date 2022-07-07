@@ -104,4 +104,23 @@ router.delete('/:id', ({ params }, res) => {
     });
 });
 
+// PUT update note on pass /api/passes/:id/note
+router.put('/:id/note', ({ params, body }, res) => {
+    PunchPass.findOneAndUpdate(
+        { _id: params.id },
+        { note: body.note },
+        { new: true, runValidators: true }
+    )
+    .then(dbPassData => {
+        if (!dbPassData) {
+            return res.status(404).json({ message: 'Pass not found' });
+        };
+        res.json(dbPassData);
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err)
+    });
+});
+
 module.exports = router;

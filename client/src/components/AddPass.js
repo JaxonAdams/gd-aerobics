@@ -11,10 +11,12 @@ const AddPass = () => {
     const handleSubmit = e => {
         e.preventDefault();
 
-        axios.post('/api/passes', formState)
-        .then(() => {
-            window.location.reload();
-        });
+        if (formState.name) {
+            axios.post('/api/passes', formState)
+            .then(() => {
+                window.location.reload();
+            });
+        };
     };
 
     return (

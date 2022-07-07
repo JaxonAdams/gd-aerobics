@@ -21,6 +21,10 @@ const punchPassSchema = new Schema(
         expirationDate: {
             // format: YYYY-MM-DD
             type: Date
+        },
+        // note on card, e.g. 'Contacted last Wednesday'
+        note: {
+            type: String
         }
     },
     {
