@@ -49,13 +49,27 @@ const PassList = ({ searchParam }) => {
         });
     };
 
+    const handleDelete = passInfo => {
+        axios.delete(`/api/passes/${passInfo._id}`)
+        .then(() => {
+            window.location.reload();
+        });
+    };
+
     return (
         <div className='pass-list-container'>
             <h1 className='list-title'>Fitness Punch Passes</h1>
             <div className='pass-list'>
                 {filteredList.map(pass => (
                     <div className={`pass ${pass.overduePunches && 'overdue-pass'}`} key={pass._id}>
-                        <div className='pass-info-container'><p>{pass.name}</p></div>
+                        <div className='pass-info-container'>
+                            <b>{pass.name}</b>
+                            {!auth.loggedIn() ?
+                            <>
+                            {pass.note && <p style={{fontStyle: 'italic'}}>Note: {pass.note}</p>}
+                            <button className='form-btn' onClick={() => handleDelete(pass)}>Delete Pass</button>
+                            </> : null}
+                        </div>
                         <div className='pass-info-container'>
                             <p>{pass.punches} {pass.punches === 1 ? 'Punch' : 'Punches'}</p>
                             {pass.overduePunches && <p>({pass.overduePunches} {pass.overduePunches === 1 ? 'punch' : 'punches'} over limit)</p>}
