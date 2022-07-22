@@ -17,7 +17,7 @@ const punchPassSchema = new Schema(
             type: Number,
             default: 0
         },
-        // if unlimited, expiration date
+        // expiration date
         expirationDate: {
             // format: YYYY-MM-DD
             type: Date
