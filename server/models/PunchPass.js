@@ -53,12 +53,16 @@ punchPassSchema.virtual('overduePunches').get(function() {
 punchPassSchema.virtual('isNearlyFull').get(function() {
     if (this.passType === 'regular' || this.passType === 'Regular') {
         if (this.punches >= 10) {
-            return 2;
-        } else if (this.punches >= 8) {
-            return 1;
-        } else {
-            return 0;
+            return true;
         }
+
+        // const currentDate = Date.now();
+        // let expDate = Date.parse(this.expirationDate);
+
+        // if (currentDate < expDate) {
+        //     return true;
+        // }
+        return false;
     };
 });
 
