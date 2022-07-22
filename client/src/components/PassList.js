@@ -113,7 +113,7 @@ const PassList = ({ searchParam }) => {
             <h1 className='list-title'>Fitness Punch Passes</h1>
             <div className='pass-list'>
                 {filteredList.map(pass => (
-                    <div className={`pass ${pass.overduePunches && 'overdue-pass'}`} key={pass._id}>
+                    <div className={`pass ${pass.isNearlyFull && 'overdue-pass'}`} key={pass._id}>
                         <div className='pass-info-container'>
                             <b> 
                                 {!auth.loggedIn() ? 
