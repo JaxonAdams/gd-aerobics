@@ -85,16 +85,16 @@ const PassList = ({ searchParam }) => {
                 {filteredList.map(pass => (
                     <div className={`pass ${pass.overduePunches && 'overdue-pass'}`} key={pass._id}>
                         <div className='pass-info-container'>
-                            <b>
-                                {pass.name} 
+                            <b> 
                                 {!auth.loggedIn() ? 
                                 <span>
                                 {pass.waiverReceived === true ?
-                                    <span onClick={() => handleUncheckWaiver(pass)}> <Check2Square /></span>
+                                    <span onClick={() => handleUncheckWaiver(pass)}><Check2Square /> </span>
                                     :
-                                    <span onClick={() => handleCheckWaiver(pass)}> <App /></span>
+                                    <span onClick={() => handleCheckWaiver(pass)}><App /> </span>
                                 }
                                 </span> : null}
+                                {pass.name}
                             </b>
                             {!auth.loggedIn() ?
                             <>
@@ -106,7 +106,7 @@ const PassList = ({ searchParam }) => {
                         <div className='pass-info-container'>
                             <p>{pass.punches} {pass.punches === 1 ? 'Punch' : 'Punches'}</p>
                             {pass.overduePunches && <p>({pass.overduePunches} {pass.overduePunches === 1 ? 'punch' : 'punches'} over limit)</p>}
-                            <p>Pass Type: {pass.passType}</p>
+                            <p>Pass Type: <b>{pass.passType}</b></p>
                             {pass.expirationDate && <p>Expires on {pass.expirationDate.split('T')[0]}</p>}
                             {!auth.loggedIn() ? 
                                 <div>

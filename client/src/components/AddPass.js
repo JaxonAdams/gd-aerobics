@@ -30,12 +30,10 @@ const AddPass = () => {
                     <option>Unlimited</option>
                 </select>
             </div>
-            {formState.passType === 'Unlimited' ? 
-                <div>
-                    <label htmlFor='expirationDate'>Expiration Date: </label>
-                    <input className='txt-input' type='date' name='expirationDate' defaultValue={formState.expirationDate}  onChange={handleChange} />
-                </div>
-            : ''}
+            <div>
+                <label htmlFor='expirationDate'>Expiration Date: </label>
+                <input className='txt-input' type='date' name='expirationDate' defaultValue={formState.expirationDate}  onChange={handleChange} />
+            </div>
             <button type='submit' className='form-btn add-form-btn'>Submit</button>
         </form>
     );
