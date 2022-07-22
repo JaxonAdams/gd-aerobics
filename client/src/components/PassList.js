@@ -45,7 +45,37 @@ const PassList = ({ searchParam }) => {
     const handleRenew = passInfo => {
         axios.post(`/api/passes/${passInfo._id}/renew`)
         .then(() => {
-            // TODO: look for way to update list after punch w/o reload
+            // set new expiration date
+            let expDate;
+
+            if (passInfo.passType === 'Regular') {
+                let date = new Date();
+                date = date.toISOString().split('T')[0];
+
+                let nextYear = parseInt(date.split('-')[0]);
+                nextYear++;
+                const month = date.split('-')[1];
+                const day = date.split('-')[2];
+
+                const newDate = [nextYear, month, day].join('-');
+
+                expDate = newDate;
+            } else {
+                let date = new Date();
+                date = date.toISOString().split('T')[0];
+
+                const year = date.split('-')[0];
+                let nextMonth = parseInt(date.split('-')[1]);
+                nextMonth === 12 ? nextMonth = 1 : nextMonth++;
+                const day = date.split('-')[2];
+
+                const newDate = [year, nextMonth, day].join('-');
+
+                expDate = newDate;
+            }
+
+            axios.put(`/api/passes/${passInfo._id}`, { expirationDate: expDate });
+
             window.location.reload();
         });
     };
