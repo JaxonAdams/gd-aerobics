@@ -51,19 +51,22 @@ punchPassSchema.virtual('overduePunches').get(function() {
 // Set a virtual value based on if the punch pass is full, nearly full, or not nearly full.
 // 2 for full, 1 for nearly full, 0 for not full or nearly full
 punchPassSchema.virtual('isNearlyFull').get(function() {
-    if (this.passType === 'regular' || this.passType === 'Regular') {
+    const currentDate = Date.now();
+    let expDate = Date.parse(this.expirationDate);
+
+    if (currentDate > expDate) {
+        return true;
+    }
+    
+    if (this.passType === 'regular' || this.passType === 'Regular') {        
         if (this.punches >= 10) {
             return true;
+        } else {
+            return false;
         }
+    }; 
 
-        // const currentDate = Date.now();
-        // let expDate = Date.parse(this.expirationDate);
-
-        // if (currentDate < expDate) {
-        //     return true;
-        // }
-        return false;
-    };
+    return false;
 });
 
 const PunchPass = model('PunchPass', punchPassSchema);
