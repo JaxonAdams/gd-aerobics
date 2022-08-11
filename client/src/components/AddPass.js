@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 const AddPass = () => {
-    const [formState, setFormState] = useState({ name: '', passType: '', expirationDate: '' });
+    const [formState, setFormState] = useState({ name: '', passType: '', expirationDate: '', punches: '' });
 
     const handleChange = e => {
         setFormState({ ...formState, [e.target.name]: e.target.value });
@@ -27,6 +27,12 @@ const AddPass = () => {
             expDate = newDate;
         } else {
             expDate = formState.expirationDate;
+        };
+
+        if (formState.punches) {
+            const punchesInt = parseInt(formState.punches);
+
+            setFormState({ ...formState, punches: punchesInt });
         };
 
         // console.log({ ...formState, expirationDate: expDate });
@@ -57,6 +63,7 @@ const AddPass = () => {
                 </div> :
                 <p>Expiration date for regular passes automatically set.</p>
             }
+            <input className='txt-input' type='number' name='punches' placeholder='Starting Punches' defaultValue={formState.punches} onChange={handleChange} />
             <button type='submit' className='form-btn add-form-btn'>Submit</button>
         </form>
     );
