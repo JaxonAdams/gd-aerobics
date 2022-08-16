@@ -4,8 +4,8 @@ import { App, Check2Square } from 'react-bootstrap-icons';
 
 import auth from '../utils/auth';
 
-const PassList = ({ searchParam }) => {
-    const [passList, setPassList] = useState([]);
+const PassList = ({ searchParam, passList, setPassList }) => {
+    // const [passList, setPassList] = useState([]);
     const [filteredList, setFilteredList] = useState([]);
 
     useEffect(() => {
