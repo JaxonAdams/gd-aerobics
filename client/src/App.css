@@ -40,6 +40,19 @@ h1, h2, h3, h4, p, a, b {
   cursor: pointer;
 }
 
+.header-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.filter-container {
+  display: flex;
+  flex-flow: row nowrap;
+}
+
 .txt-input {
   font-size: 1.2rem;
   margin: 1rem;
@@ -47,6 +60,15 @@ h1, h2, h3, h4, p, a, b {
   border-radius: 18px;
   border: none;
   font-family: var(--font-primary);
+}
+
+.searchbar {
+  margin: 0.5rem;
+}
+
+.filter-txt {
+  font-size: 0.8rem;
+  cursor: pointer;
 }
 
 .pass-list-container {
