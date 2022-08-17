@@ -29,7 +29,7 @@ const Header = ({ searchParam, setSearchParam, filterExpPass, setFilterExpPass }
                         <Check2Square /> :
                         <App />}
                     </span>
-                Only Warning Passes</p>
+                Only Expired Passes</p>
             </div>
         </header>
     );
