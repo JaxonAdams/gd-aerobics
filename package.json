@@ -5,9 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "cd server && npm start",
+    "start": "vercel dev",
     "install": "cd server && npm i && cd ../client && npm i",
-    "develop": "concurrently \"cd client && npm start\" \"cd server && npm run watch\""
+    "develop": "concurrently \"cd client && npm start\" \"cd server && npm run watch\"",
+    "build": "cd client && npm run build"
   },
   "repository": {
     "type": "git",
