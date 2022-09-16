@@ -4,8 +4,8 @@ import { App, Check2Square } from 'react-bootstrap-icons';
 
 import auth from '../utils/auth';
 
-const PassList = ({ searchParam }) => {
-    const [passList, setPassList] = useState([]);
+const PassList = ({ searchParam, passList, setPassList, filterExpPass }) => {
+    // const [passList, setPassList] = useState([]);
     const [filteredList, setFilteredList] = useState([]);
 
     useEffect(() => {
@@ -13,11 +13,20 @@ const PassList = ({ searchParam }) => {
         .then(response => {
             setPassList(response.data);
             if (!filteredList.length) {
-                setFilteredList(response.data);
+                let warningPassList;
+                if (filterExpPass) {
+                    warningPassList = response.data.filter(pass => {
+                        if (pass.isNearlyFull === true) {
+                            return true;
+                        };
+                        return false;
+                    });
+                };
+                setFilteredList(warningPassList || response.data);
             };
         });
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    }, [filterExpPass]);
 
     useEffect(() => {
         let filteredList;
@@ -30,9 +39,18 @@ const PassList = ({ searchParam }) => {
             return false;
         });
 
+        if (filterExpPass) {
+            filteredList = filteredList.filter(pass => {
+                if (pass.isNearlyFull === true) {
+                    return true;
+                };
+                return false;
+            });
+        };
+
         setFilteredList(filteredList);
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [searchParam]);
+    }, [searchParam, filterExpPass]);
 
     const handlePunch = passInfo => {
         axios.post(`/api/passes/${passInfo._id}/punch`)
