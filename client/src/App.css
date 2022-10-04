@@ -27,6 +27,10 @@ h1, h2, h3, h4, p, a, b {
   background-color: var(--tertiary-color);
 }
 
+.header * {
+  flex: 1;
+}
+
 .header-logo {
   width: 18vw;
   margin: 0 0 0 1rem;
@@ -212,11 +216,17 @@ h1, h2, h3, h4, p, a, b {
 /* media queries */
 @media screen and (max-width: 1000px) {
   .header-logo {
-    width: 40vw;
+    width: 300px;
   }
 }
 
 @media screen and (max-width: 768px) {
+  .header {
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+  }
+
   .list-title {
     font-size: 2rem;
   }
@@ -246,7 +256,6 @@ h1, h2, h3, h4, p, a, b {
   }
   
   .header-logo {
-    width: 100vw;
     margin: 0;
   }
 
