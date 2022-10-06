@@ -1,6 +1,9 @@
 const express = require('express');
 const path = require('path');
 
+// environment variables for dev env
+require('dotenv').config();
+
 const db = require('./config/connection');
 const routes = require('./controllers');
 
