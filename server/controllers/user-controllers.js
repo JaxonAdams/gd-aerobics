@@ -26,13 +26,13 @@ router.post('/login', async ({ body }, res) => {
     const user = await User.findOne({ email: body.email }).select('-__v');
 
     if (!user) {
-        return res.status(500).json({ message: 'Invalid email.' });
+        return res.status(404).json({ message: 'Email not found.' });
     }
 
     const correctPassword = await user.isCorrectPassword(body.password);
 
     if (!correctPassword) {
-        return res.status(500).json({ message: 'Invalid password.' });
+        return res.status(403).json({ message: 'Incorrect password.' });
     }
 
     const token = signToken(user);
