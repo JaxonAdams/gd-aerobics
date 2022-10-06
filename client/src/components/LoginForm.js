@@ -34,8 +34,10 @@ const LoginForm = () => {
                 if (!response.ok) {
                     if (response.status === 404) {
                         setErrorMessage('Email not found.');
+                        return;
                     } else if (response.status === 403) {
                         setErrorMessage('Incorrect password.');
+                        return;
                     };
                 };
 
