@@ -161,4 +161,24 @@ router.put('/:id', ({ params, body }, res) => {
     });
 });
 
+// GET punch pass count /api/passes/count
+router.get('/info/count', (req, res) => {
+    PunchPass.find({})
+    .then(dbPassData => {
+        dbPassData.forEach(pass => console.log(pass.passType));
+        const regCount = dbPassData.filter(pass => {
+            return pass.passType == 'Regular'
+        }).length;
+        const unlimitedCount = dbPassData.filter(pass => {
+            return pass.passType == 'Unlimited'
+        }).length;
+        console.log(regCount, unlimitedCount);
+        res.status(200).json({ regular: regCount, unlimited: unlimitedCount });
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    });
+});
+
 module.exports = router;
