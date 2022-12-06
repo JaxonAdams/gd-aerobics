@@ -158,6 +158,7 @@ h1, h2, h3, h4, p, a, b {
   font-size: 1.7rem;
   font-weight: 400;
   margin: 0;
+  text-align: center;
 }
 
 .form-container {
