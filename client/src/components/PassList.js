@@ -82,9 +82,12 @@ const PassList = ({ searchParam, passList, setPassList, filterExpPass }) => {
                 let date = new Date();
                 date = date.toISOString().split('T')[0];
 
-                const year = date.split('-')[0];
+                let year = parseInt(date.split('-')[0]);
                 let nextMonth = parseInt(date.split('-')[1]);
-                nextMonth === 12 ? nextMonth = 1 : nextMonth++;
+                if (nextMonth === 12) {
+                    nextMonth = 1;
+                    year += 1;
+                };
                 const day = date.split('-')[2];
 
                 const newDate = [year, nextMonth, day].join('-');
