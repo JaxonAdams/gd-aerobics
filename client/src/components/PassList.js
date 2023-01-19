@@ -90,7 +90,7 @@ const PassList = ({ searchParam, passList, setPassList, filterExpPass }) => {
                 };
                 const day = date.split('-')[2];
 
-                const newDate = [year, nextMonth, day].join('-');
+                const newDate = [year, nextMonth + 1, day].join('-');
 
                 expDate = newDate;
             }
@@ -129,6 +129,11 @@ const PassList = ({ searchParam, passList, setPassList, filterExpPass }) => {
         });
     };
 
+    const formatDate = dateStr => {
+        const dateArr = dateStr.split('-');
+        return `${dateArr[1]}/${dateArr[2]}/${dateArr[0]}`;
+    };
+
     return (
         <div className='pass-list-container'>
             <h1 className='list-title'>Fitness Punch Passes</h1>
@@ -158,7 +163,7 @@ const PassList = ({ searchParam, passList, setPassList, filterExpPass }) => {
                             <p>{pass.punches} {pass.punches === 1 ? 'Punch' : 'Punches'}</p>
                             {pass.overduePunches && <p>({pass.overduePunches} {pass.overduePunches === 1 ? 'punch' : 'punches'} over limit)</p>}
                             <p>Pass Type: <b>{pass.passType}</b></p>
-                            {pass.expirationDate && <p>Expires on {pass.expirationDate.split('T')[0]}</p>}
+                            {pass.expirationDate && <p>Expires on {formatDate(pass.expirationDate.split('T')[0])}</p>}
                             {!auth.loggedIn() ? 
                                 <div>
                                     <button className='form-btn' onClick={() => handlePunch(pass)}>Punch</button>   
